@@ -34,14 +34,13 @@
     </p>
     <h3 id="podnadpis">Šifrování, komunikace a zabezpečení 4G technologie</h3>
     <h4>
-        A5/1, 2, 3 šifrování (streamová šifra)
+        ZUC algoritmus (streamová šifra) – 128b klíč
     </h4>
     <p>
-        Šifruje komunikaci mezi mobilním zařízením a základnovou stanicí (BTS). Algoritmus byl tajný, ale v roce 1994 unikl jeho popis a roku 1999 byl podrobně popsán na základě reverzního inženýrství. 
-<br>    Funkčnost A5 šifer byla jednoduchá. Na každé SIM kartě je uložen sdílený klíč Ki  (64b). Před zahájením hovoru se z Ki a náhodné 128b hodnoty spočte šifrovací klíč KC a autentizační kód. Pro každý rámec se vygeneruje 228b hesla (114b pro download, 114b pro upload). Pro kombinaci hesla a dat se používá logická operace XOR. 
+        Textově orientovaný algoritmus, bere 128b primární klíč  a 128b primární vektor jako vstup a výstupem jsou klíče o 32bitových slovech pro šifrování a dešifrování. 
     </p>
     <h4>
-        SNOW3 algoritmus (streamová šifra)
+        SNOW3 algoritmus (streamová šifra) – 128b klíč
     </h4>
     <p>
         Pro algoritmus je třeba zvolit několit vstupních parametrů:
@@ -55,6 +54,18 @@
         </ul>
         <br> Na základě těchto parametrů se vypočítá MAC-I (32b) – vypočtený autentizační kód zprávy
     </p>
+    <h4>
+        AES algoritmus (bloková šifra) – 128,192,256b klíč
+    </h4>
+    <p>Tento algoritmus transformuje S-box na dynamický. Vylepšený šifrovací algoritmus pro sítě 4G. Zlepšuje složitost kódování, čímž se snižuje pravděpodobnost útoku, je vysoce citlivý na změny v klíči, tyto změny způsobují značné změny ve výkonu.<br>
+    Postup algoritmu je následovný: 
+<ul>
+    <li><b>Přidání podklíče (round key)</b> – každý byte stavu je zkombinován s podklíček za pomocí operace XOR nad všemi bity</li>
+    <li><b>SubBytes</b> - tabulkové nahrazení každého bytu datového pole</li>
+    <li><b>ShiftRows</b> - provádí cyklický posun doleva všech řádků, kromě nuly</li>
+<li><b>Mix Columns </b>– kombinace 4 bytů v každém sloupci</li>
+<li><b>Přidání podklíče (round key)</b></li>
+</ul></p>
     <h4>
         ECDH protokol (Elliptic-curve Diffie–Hellman protocol)
     </h4>
@@ -82,10 +93,9 @@
     Je méně náročný na hardware a software, ale vyžaduje větší znalosti o aplikacích, které pomůžou útok zkonstruovat, např. triggery. Není tak nebezpečný, jako Aktivní model
     <li style="font-weight:bold;color:rgb(143, 38, 38)">Pasivní model</li>
     Je potřeba nejméně znalostí ze všech tří modelů, také působí nejmenší škody. Může trackovat uživatele, skenovat síť a sledovat pohyb uživatelů v síti. 
-  </ul>
+  </ul><br>
+  <b style="color:rgb(143, 38, 38)">Password cracking</b> – tato metoda zkouší prolomit heslo souboru, kde je AES klíč, zde záleží na tom, jaké heslo bylo zvoleno, samotný AES algoritmus je však prakticky neprolomitelný. 
 </p>
-<h3 id="podnadpis">Praktický útok na 4G A5/3 algoritmus (PYTHON kód)</h3>
-<img src="kod_4g_1.png"><img src="kod_4g_2.png"><img src="kod_4g_3.png">
 </div>
 <hr>
 <h2 id="nadpis">5G mobilní sítě</h2>
@@ -167,6 +177,22 @@
     <b>Závěr</b>
 </h1>
 <p>Každá síť má své nedostatky, každým dnem se dělá vše pro to, aby byla síť bezpečnější, ale také zároveň rychlejší a aplikovatelnější v různých odvětvích. Výše jsem zmiňoval, že v mnoha případech je síťová infrastruktura ohrožena jen tím, že je špatně nakonfigurována, ne pokaždé je úspěšný útok nedostatkem samotných technologií.</p>
+<h1>
+    <b>Zdroje</b>
+</h1>
+<a href><p>https://habr.com/ru/post/112733/</p></a>
+<a href><p>https://csrc.nist.gov/csrc/media/publications/fips/197/final/documents/fips-197.pdf</p></a>
+    <a href><p>https://online-journals.org/index.php/i-jim/article/view/24175/9767</p></a>
+    <a href><p>https://habr.com/ru/post/112733/</p></a>
+    <a href><p>https://www.researchgate.net/publication/325050136_Overview_of_ZUC_Algorithm_and_its_Contributions_on_the_Security_Success_and_Vulnerabilities_of_4G_Mobile_Communication</p></a>
+    <a href><p>https://sharetechnote.com/html/Handbook_LTE_SNOW3G.html</p></a>
+        <a href> <p>https://5g.security/cyber-kinetic/5g-security-privacy-challenges/</p></a>
+            <a href>  <p>https://medium.com/@positive_technologies/5g-security-issues-2cb713482a50https://medium.com/@positive_technologies/5g-security-issues-2cb713482a50</p></a>
+                <a href><p>https://www.programmersought.com/article/11668721158/</p></a>
+                    <a href><p>http://anisimoff.org/lte/pdcp.html</p></a>
+                        <a href><p>http://anisimoff.org/lte/rlc.html</p></a>
+                            <a href><p>https://docs.oracle.com/en/industries/communications/cloud-native-core/2.3.1/sepp_user_guide/intoduction.html</p></a>
+                                <a href><p>https://blog.3g4g.co.uk/2020/06/5g-roaming-with-sepp-security-edge.html</p></a>
 </div>
     </body>
 </html>
