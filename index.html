@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>SIL0074_ZBK_PROJEKT</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="sil0074_5G4G.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+    </head>
+    <body  style="font-family:Courier New; margin-left:50px">
+        <h1 style=text-align:center>Bezpečnost ve 4G a 5G sítích<br>
+        SIL0074</h1>
+        <hr>
+    <h2 id="nadpis">4G mobilní sítě</h2>
+    <p>4G je čtvrtá generace mobilní technologie, která následuje její předchůdce (2G a 3G). 4G architektura nabízí vysoké rychlosti oproti 3G technologii. Často je 4G technologie pojmenovávaná jako 4G LTE, to však není správné označení, protože LTE je samotný subjekt 4G technologie. Je využívaná napříč platformami a jedná se momentálně o nejpoužívanější mobilní technologii. 4G nabízí uživateli, narozdíl od 3G sítí, prohlížení webových a streamovacích HD videí na mobilních zařízeních.</p>
+    <div style="margin-left:30px">
+    <h3 id="podnadpis">4G kroky</h3>
+    <p>
+        <ol>
+            <li>Autentizace a autorizace uživatele (využívá se EPS AKA-1/AKA-2)</li>
+            <li>Důvěrnost zprávy (ověření zprávy)</li>
+            <li>Šifrování a ochrana zprávy (pomocí klíče a vybraných algoritmů, například SNOW3 nebo A5)</li>
+            <li>Důvěrnost uživatelské identity (ověření uživatelské identity)</li>
+        </ol>
+    </p>
+    <h3 id="podnadpis">Jak rychlá 4G je?</h3>
+    <p>
+        Jak již bylo zmíněno, oproti 3G sítím se jednalo o značný postup napříč rychlostmi, standartní 4G nabízí rychlosti stahování kolem 14 Mbps, což je skoro pětkrát tak rychle, jak 3G. Avšak 4G dokáže teoreticky nabídnout až 150 Mbps při stahování, což vystačuje pro pohodlné stahování audia i videa během pár vteřin.  Rychlosti nahrávání nejsou nijak pozadu, standartní 4G sítě dosahují rychlostí kolem 8 Mbps, teoretické rychlosti nahrávání se pohybují až kolem 50 Mbps.
+    </p>
+    <h3 id="podnadpis">4G a její využití</h3>
+    <p>
+        Výhodou 4G je také hodně nízka latence (30-40ms), která je důležitá pro komunikaci v reálném čase (třeba videohovory nebo online hraní). <br>
+        Dalším benefitem je například rychlost nastavení 4G sítě, rychlejší rozšíření do nových lokací.
+    </p>
+    <h3 id="podnadpis">Šifrování, komunikace a zabezpečení 4G technologie</h3>
+    <h4>
+        A5/1, 2, 3 šifrování (streamová šifra)
+    </h4>
+    <p>
+        Šifruje komunikaci mezi mobilním zařízením a základnovou stanicí (BTS). Algoritmus byl tajný, ale v roce 1994 unikl jeho popis a roku 1999 byl podrobně popsán na základě reverzního inženýrství. 
+<br>    Funkčnost A5 šifer byla jednoduchá. Na každé SIM kartě je uložen sdílený klíč Ki  (64b). Před zahájením hovoru se z Ki a náhodné 128b hodnoty spočte šifrovací klíč KC a autentizační kód. Pro každý rámec se vygeneruje 228b hesla (114b pro download, 114b pro upload). Pro kombinaci hesla a dat se používá logická operace XOR. 
+    </p>
+    <h4>
+        SNOW3 algoritmus (streamová šifra)
+    </h4>
+    <p>
+        Pro algoritmus je třeba zvolit několit vstupních parametrů:
+        <ul>
+            <li>COUNT-I (32b) – vstup závislý na rámci</li>
+            <li>FRESH (32b) – náhodné číslo</li>
+            <li>DIRECTION (1b) – směr přenosu</li>
+            <li>IK (128b) – integrační klíč</li>
+            <li>LENGTH (64b) – délka zprávy</li>
+            <li>MESSAGE – obsah zprávy (data)</li>
+        </ul>
+        <br> Na základě těchto parametrů se vypočítá MAC-I (32b) – vypočtený autentizační kód zprávy
+    </p>
+    <h4>
+        ECDH protokol (Elliptic-curve Diffie–Hellman protocol)
+    </h4>
+    <p>
+        Slouží k „seznámení“ dvou stran pro přenesení informací na nechráněném kanálu. Tyto informace se pak využívají přímo jako klíč k autentizaci. ECDH je bezpečný, neboť informace o klíči není nikterak tajná, tím pádem nevadí, že je komunikace tohoto protokolu nechráněná.
+    </p>
+    <h3 id="podnadpis">
+        Slabiny a nedokonalosti 4G zabezpečení
+    </h3>
+    <p>
+        Hlavní slabina 4G sítí spočívá v tom, že šifrování neposkytuje „end-to-end“ zabezpečení. Šifruje pouze provoz mezi mobilním zařízením a BTS (základnovou stanicí). Není zde žádné šifrování provozu přes pevné drátové spojení (za BTS). To znamená, že data nejsou v bezpečí při průchodu internetovou sítí jako takovou, proto je potřeba využívat vlastní šifrovací algoritmy a protokoly, např. SSL/TLS, SSH nebo VPN.
+    </p>
+    <h3 id="podnadpis">
+        Druhy možných útoků na 4G sítě
+    </h3>
+    <p>
+        <b>Odhalení lokace</b> – útočník odhalí data GPS technologie jejími nedostatky, lze je úspěšně provést také skrze Facebook či WhatsApp. Útočník má možnost oběť lokalizovat na přesnost 2km2 a získá GPS souřadnice. To lze kvůli slabinám LTE Radio Resource Control (RRC) protokolu. RRC protokol je používán také v 5G, jedná se o protokol zajišťující spojení, jako takové.
+<br><br><b>DoS (Denial of Service)</b> – skrze tento útok nelze síť ovládat, jen znefunkčnit. Jedná se o zahlcování sítě obrovským množstvím požadavků, či využitím nějaké chyby. DoS znemožní funkčnost UE.
+<br><br>
+  <b>3 útočné modely proti 4G/LTE zařízením:</b>  
+  <ul>
+    <li style="font-weight:bold">Aktivní model</li>
+    Vyžaduje vysoce výkonný hardware a software, vyžaduje vysoké znalosti LTE modelu. Při tomto útoku se používá tzv. eNodeB, díky čmuž ziská útočník kontrolu prakticky nad celou komunikací vcházející a vycházející z UE. Útočník je také schopen nahrát do UE svvůj vlastní algoritmus pro krádež dat. Je to jeden z nejhorších možných útoků (nejefektivnější).
+    <li style="font-weight:bold">Polo-aktivní model</li>
+    Je méně náročný na hardware a software, ale vyžaduje větší znalosti o aplikacích, které pomůžou útok zkonstruovat, např. triggery. Není tak nebezpečný, jako Aktivní model
+    <li style="font-weight:bold">Pasivní model</li>
+    Je potřeba nejméně znalostí ze všech tří modelů, také působí nejmenší škody. Může trackovat uživatele, skenovat síť a sledovat pohyb uživatelů v síti. 
+  </ul>
+</p>
+<h3 id="podnadpis">Praktický útok na 4G A5/3 algoritmus (PYTHON kód)</h3>
+<img src="kod_4g_1.png"><img src="kod_4g_2.png"><img src="kod_4g_3.png">
+</div>
+<hr>
+<h2 id="nadpis">5G mobilní sítě</h2>
+<p>5G je mobilní síť 5. generace. Jedná se o nový globální bezdrátový standard, který navazuje na 4G. 
+    5G umožňuje nový druh sítě, která je navržena tak, aby spojovala prakticky všechny a všechno, včetně strojů, objektů a zařízení.
+    Bezdrátová technologie 5G má poskytovat vyšší špičkové datové rychlosti několika Gb/s, ultra nízkou latenci, větší spolehlivost, masivní kapacitu sítě, zvýšenou dostupnost a jednotnější uživatelský zážitek pro více uživatelů. 
+    Vyšší výkon a zlepšená efektivita umožňují nové uživatelské zkušenosti a propojují nová odvětví.
+    </p>
+<div style="margin-left:30px">
+<h3 id="podnadpis">Jak rychlá 5G je?</h3>
+<p>Standartní 5G nabízí rychlosti stahování ve stovkách Mbps. Avšak 5G dokáže teoreticky nabídnout až 20 Gbps při stahování, což spolu s ultra nízkou latencí (kolem 10-15ms) dělá z 5G technologie bezkonkurečního vítěze na poli mobilních sítí.  Rychlosti nahrávání jsou u standartní 5G sítě kolem 25 Mbps.</p>
+<h3 id="podnadpis">5G a její využití</h3>
+<p>Nejvýznamnějším využitím je IoT (internet věcí), díky kterému lze, při spojení 5G a jeho nízkou latencí, propojit chytrá zařízení, jako jsou třeba autonomní vozidla a budovy. 5G lze využít také pro datově náročnější opearce, například ve zdravotnictví nebo bezpečnosti.</p>
+<h3 id="podnadpis">Bezpečnost v 5G</h3>
+<p>
+    Obecně vzato, 5G by měla disponovat větší síťovou bezpečností, než její předchůdci.Obecně vzato, 5G by měla disponovat větší síťovou bezpečností, než její předchůdci.<br>
+    Používá tedy následující procesy pro zajištění bezpečnosti:
+    <ul>
+        <li>Asymetrické šifrování – používá klíč, kterým se uživatel prokazuje</li>
+        <li>Primární autentizace – všechna zařízení v síti jsou autentizována</li>
+        <li>Sekundární autentizace – autentizaci podléhá i veškerá komunikace mimo operátora</li>
+        <li>Hierarchie s klíči – síť 5G tyto klíče od sebe odděluje (separuje), tím se zmírní poškození sítě, pokud je narušena část její infrastruktury a chrání integritu přenášených dat</li>
+        <li>Ochrana rádiových systémů – V základnové stanici (gNB) jsou DU (Distributed Unit) a CU (Central unit) odděleny na úrovní hierarchie. Mohou mezi sebou komunikovat pouze prostřednictvím chránených rozhraní. </li>
+    </ul>
+    <br>
+    <b>Používá také řadu bezpečnostních protokolů a mechanismů:</b>
+    <ul>
+        <li><b>SDAP(Service data adaptation protocol)</b></li>
+        mapuje provoz QoS (Quality of service) do „data service“, který pak povoluje přenost informačních signálů mezi sítovými rozhraními
+        <li><b>PDCP (Packet data convergence protocol) </b></li>
+        přenáší data na uživatelské a řídící linii, komprese hlavičky, šifrování a ochrana integrity
+        <li><b>RLC (Radio link control)</b></li>
+        podporuje tři přenosové módy (transparent, unacknowledged a acknowledged) – transparent (nechá PDU nižší vrstvě bez modifikace), unacknowledged (přidává segmentaci a hlavičku), acknowledged (podporuje příjem datových feedbacků)
+        <li><b>SEPP (Security Edge Protection Proxy architecture)</b></li>
+        decentralizované řešení složené z řídicí roviny (N32-C) a dopředné roviny (N32-F). Toto řešení je nasazeno mezi dvěma NF patřícími různým PLMN (Public land mobile network), které ke vzájemné komunikaci používají rozhraní N32<br>
+        <br><img src="sepp_obrazek.png"><br><br>
+        <b>N32-C </b>se používá pro vyjednávání typu zabezpečení mezi lokálním SEPP a vzdáleným SEPP
+        <br><br><b>N32-F </b>je datová rovina, který provádí šifrování/dešifrování zpráv do a z jiných PLMN (Public land mobile network) SEPP na základě dohodnutého typu zabezpečení
+    </ul>
+</p>
+<h3 id="podnadpis">Rizika a bezpečnostní problémy 5G sítí</h3>
+<h4>
+    <b>IoT</b>
+</h4>
+<p>Jak již bylo zmíněno, 5G posílí IoT (internet věcí. Bohužel se opakovaně ukázalo, že IoT má značné bezpečnostní problémy na více úrovních. Zařízení jsou často cílem útoků, takže legitimní uživatelé mají výpadky služeb, odcizená data nebo jinak kompromitovanou síť. Sítě 5G nemusí být přímo ohroženy, ale klíčové případy použití, o které se opírá, určitě jsou.</p>
+<h4>
+    <b>Decentralizovaná bezpečnost</b>
+</h4>
+<p>Dynamické softwarové systémy 5G mají mnohem více bodů směrování provozu. Aby byla zajištěna úplná bezpečnost, musí být vše monitorováno. Protože to může být obtížné, jakékoli nezabezpečené oblasti by mohly ohrozit ostatní části sítě.</p>
+<h4>
+    <b>„Network slicing“</b>
+</h4>
+<p>Toto síť rozdělí na několik oddělených částí. Každou část sítě je třeba odděleně nakonfigurovat a v tom se právě skrývá jedno z vícero bezpečnostních rizik, protože nastavení těchto částí může být chybné. Tato chyba může zjednodušit útočníkovi přístup do 5G sítě. 
+    <br>Jeden ze tří úspěšných útoků na mobilní sítě byl vyústěn nesprávnou konfigurací zařízení.
+</p>
+<h3>
+<b>Útoky na 5G sítě</b>
+</h3>
+<h4>
+    <b>Botnet útoky</b>
+</h4>
+<p>Tyto útoky jsou způsobeny skupinou botů, kteří jsou mezi sebou propojení a provádí stejné požadavky, zahlcují síť, rozesílání spamu po síti a DDoS.</p>
+<h4>
+    <b>MiTM útoky (Man-in-the-Middle)</b>
+</h4>
+<p>Tímto útokem se útočník snaží komunikaci v síti odposlouchávat a řídit přeměrováním provozu. Jinými slovy dělá prostředníka mezi účastníkem A (Alice)  a B (Bob) a může tedy komunikaci upravovat, řídit, získavat citlivé informace a využít je ke krádeži či vydírání.</p>
+<h4>
+    <b>Odhalení polohy a odposlech hovorů</b>
+</h4>
+<p>Tento útok lze provést, pokud má útočník aspoň základní znalost vysílacích protokolů.</p>
+<h4>
+    <b>Útok na network slicing</b>
+</h4>
+<p>
+    Jak již bylo zmíněno výše, síť musí být správně nakonfigurována, jinak hrozí zneužití konfiguračních chyb a ovládnutí sítě. 
+</p>
+<hr>
+<h1>
+    <b>Závěr</b>
+</h1>
+<p>Každá síť má své nedostatky, každým dnem se dělá vše pro to, aby byla síť bezpečnější, ale také zároveň rychlejší a aplikovatelnější v různých odvětvích. Výše jsem zmiňoval, že v mnoha případech je síťová infrastruktura ohrožena jen tím, že je špatně nakonfigurována, ne pokaždé je úspěšný útok nedostatkem samotných technologií.</p>
+</div>
+    </body>
+</html>
